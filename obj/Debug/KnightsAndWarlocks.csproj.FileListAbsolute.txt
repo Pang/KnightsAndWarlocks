@@ -1,0 +1,7 @@
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\bin\Debug\KnightsAndWarlocks.exe.config
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\bin\Debug\KnightsAndWarlocks.exe
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\bin\Debug\KnightsAndWarlocks.pdb
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.csprojResolveAssemblyReference.cache
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.csproj.CoreCompileInputs.cache
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.exe
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.pdb
