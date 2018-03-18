@@ -10,29 +10,8 @@ namespace KnightsAndWarlocks
     {
         public static void Main()
         {
-            //Instantiate objects from each class. GameFunctions does not need instantiating as it is static.
             Npc enemyNpc1 = new Npc();
-            Player firstPlayer = null;
-            Console.WriteLine("Type in the class you want to play: (Knight or Warlock)");
-
-            while (firstPlayer == null)
-            {
-                string classChoice = Console.ReadLine();
-
-                switch (classChoice.ToUpper())
-                {
-                    case "KNIGHT":
-                        firstPlayer = new Knight();
-                        break;
-                    case "WARLOCK":
-                        firstPlayer = new Warlock();
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Not a valid class, please enter 'Knight' or 'Warlock'");
-                        break;
-                }
-            }
+            Player firstPlayer = GameFunctions.ChooseClass();
 
             while (GameFunctions.gameOn)
             {
