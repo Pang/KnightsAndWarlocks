@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/obj/Debug
-/obj/Release
+/bin/
+/obj/
 /.vs/KnightsAndWarlocks/v15
 /.vs
