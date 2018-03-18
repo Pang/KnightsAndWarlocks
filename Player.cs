@@ -10,7 +10,7 @@ namespace KnightsAndWarlocks
     {
         private string Name { get => _name; set => Name = value; }
         public virtual string _name { get; protected set; }
-        public int health { get; set; } = 100;
+        public int Health { get; set; } = 100;
         protected virtual double _accuracyP { get; }
         public virtual int HealItems { get; set; } = 9;
         public virtual string HealItemsType { get; protected set; }
@@ -44,13 +44,13 @@ namespace KnightsAndWarlocks
         public void HealSelf()
         {
             int heal = GameFunctions.RndNext(65, 75);
-            int newHealth = health + heal;
+            int newHealth = Health + heal;
 
             //Clamp health to not go above 100
             if (newHealth > 100) newHealth = 100;
 
             //Swap placeholder health(newHealth) back into int health variable
-            health = newHealth;
+            Health = newHealth;
             Console.WriteLine($"{Name} bandaged for {heal} health.");
             HealItems--;
         }

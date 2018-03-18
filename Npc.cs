@@ -81,13 +81,10 @@ namespace KnightsAndWarlocks
                 if (IsAccuracySuccessful())
                 {
                     int dmg = GameFunctions.RndNext(11, 16);
-                    name.health -= dmg;
+                    name.Health -= dmg;
 
                     //clamp health to not go below 0
-                    if (name.health < 0)
-                    {
-                        name.health = 0;
-                    }
+                    if (name.Health < 0) name.Health = 0;
                     else //Gives each foe a unique roleplay element.
                     {
                         if (NpcClass == NpcClasses.Warrior)
@@ -115,10 +112,7 @@ namespace KnightsAndWarlocks
                 int newHealth = health + heal;
 
                 //Clamp health to not go above 100
-                if (newHealth > 100)
-                {
-                    newHealth = 100;
-                }
+                if (newHealth > 100) newHealth = 100;
 
                 //Swap placeholder health(newHealth) back into health
                 health = newHealth;

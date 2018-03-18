@@ -10,12 +10,13 @@ namespace KnightsAndWarlocks
     {
         public static void Main()
         {
+            //Instatiate both player and enemy. ChooseClass is called when creating player object to decide which inherited member to assign.
             Npc enemyNpc1 = new Npc();
             Player firstPlayer = GameFunctions.ChooseClass();
 
             while (GameFunctions.gameOn)
             {
-                if (firstPlayer.health <= 0)
+                if (firstPlayer.Health <= 0)
                 {
                     Console.Clear();
                     Console.WriteLine($"The {enemyNpc1.NpcRace} {enemyNpc1.NpcClass} has killed you. You got {GameFunctions.killCounter} kills in {GameFunctions.turnCounter} turns! Type 'Exit' or 'Restart'.");
@@ -35,7 +36,7 @@ namespace KnightsAndWarlocks
                     Console.WriteLine("Option 1: Attack");
                     Console.WriteLine($"Option 2: Heal({firstPlayer.HealItems} {firstPlayer.HealItemsType} left!)");
                     Console.WriteLine("");
-                    Console.WriteLine($"{firstPlayer._name}: {firstPlayer.health}hp");
+                    Console.WriteLine($"{firstPlayer._name}: {firstPlayer.Health}hp");
                     Console.WriteLine($"{enemyNpc1.NpcRace} {enemyNpc1.NpcClass}: {enemyNpc1.health}hp");
                     Console.WriteLine("");
                     Console.WriteLine($"Turn: {GameFunctions.turnCounter}");
@@ -53,11 +54,8 @@ namespace KnightsAndWarlocks
                             case 1:
                                 Console.Clear();
                                 firstPlayer.GiveDmg(enemyNpc1);
+                                if (enemyNpc1.health > 0) enemyNpc1.NpcChoice(firstPlayer);
 
-                                if (enemyNpc1.health > 0)
-                                {
-                                    enemyNpc1.NpcChoice(firstPlayer);
-                                }
                                 break;
                             case 2:
                                 if (firstPlayer.HealItems > 0)

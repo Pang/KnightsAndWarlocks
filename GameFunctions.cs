@@ -9,7 +9,7 @@ namespace KnightsAndWarlocks
     static class GameFunctions
     {
         private static Random _random = new Random();
-        public static bool gameOn = true;
+        public static bool gameOn = false;
         public static int turnCounter = 0;
         public static int killCounter = 0;
 
@@ -41,7 +41,9 @@ namespace KnightsAndWarlocks
                         break;
                 }
             }
+            gameOn = true;
             return firstPlayer;
+            
         }
 
         public static void NewEnemy(Npc player)
@@ -56,24 +58,18 @@ namespace KnightsAndWarlocks
 
         public static void Outcome(string _exitText, Player player1, Npc player2)
         {
-            if (_exitText.ToLower() == "exit")
-            {
-                gameOn = false;
-            }
+            if (_exitText.ToLower() == "exit") gameOn = false;
             else if (_exitText.ToLower() == "restart")
             {
                 player1.HealItems = 9;
-                player1.health = 100;
+                player1.Health = 100;
                 player2.health = 100;
                 player2.NpcEnemyClass();
                 player2.NpcEnemyRace();
                 TurnCountsZero();
                 KillCountsZero();
             }
-            else
-            {
-                Console.Clear();
-            }
+            else Console.Clear();
         }
     }
 }
