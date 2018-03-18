@@ -1,8 +1,22 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
+﻿/build/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+/bin
+/obj
 bin
 obj
-/.vs/KnightsAndWarlocks/v15
+bin/
+obj/
+Debug/
+Release/
+*.opensdf
+*.tlog
+*.log
+TestResult.xml
+*.VisualState.xml
+Version.cs
+Version.h
+Version.cpp
 /.vs

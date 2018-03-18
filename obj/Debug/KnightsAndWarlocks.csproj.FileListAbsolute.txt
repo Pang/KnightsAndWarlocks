@@ -5,3 +5,7 @@ C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\
 C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.csproj.CoreCompileInputs.cache
 C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.exe
 C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.pdb
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\bin\Debug\KnightsAndWarlocks.exe.manifest
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\bin\Debug\KnightsAndWarlocks.application
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.exe.manifest
+C:\Users\RyanB\Documents\GitHub\KnightsAndWarlocks\KnightsAndWarlocks\obj\Debug\KnightsAndWarlocks.application
