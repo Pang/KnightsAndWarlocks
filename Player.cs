@@ -10,9 +10,9 @@ namespace KnightsAndWarlocks
     {
         private string Name { get => _name; set => Name = value; }
         public virtual string _name { get; protected set; }
-        public int Health { get; set; } = 100;
+        public ushort Health { get; set; } = 100;
         protected virtual double _accuracyP { get; }
-        public virtual int HealItems { get; set; } = 9;
+        public virtual ushort HealItems { get; set; } = 9;
         public virtual string HealItemsType { get; protected set; }
         public virtual string PlayerClass { get; protected set; }
 
@@ -50,7 +50,6 @@ namespace KnightsAndWarlocks
             }
             GameFunctions.gameOn = true;
             return firstPlayer;
-
         }
 
         public virtual void GiveDmg(Npc name)
@@ -58,7 +57,7 @@ namespace KnightsAndWarlocks
             //Check player accuracy 'IsSuccessful' method is true.
             if (IsSuccessful())
             {
-                int dmg = GameFunctions.RndNext(11, 17);
+                ushort dmg = GameFunctions.RndNext(11, 17);
                 name.health -= dmg;
 
                 //clamp health to not go below 0
@@ -70,8 +69,8 @@ namespace KnightsAndWarlocks
 
         public void HealSelf()
         {
-            int heal = GameFunctions.RndNext(65, 75);
-            int newHealth = Health + heal;
+            ushort heal = GameFunctions.RndNext(65, 75);
+            ushort newHealth = (ushort)(Health + heal);
 
             //Clamp health to not go above 100
             if (newHealth > 100) newHealth = 100;

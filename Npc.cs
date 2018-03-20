@@ -13,14 +13,14 @@ namespace KnightsAndWarlocks
     {
         public NpcRaces NpcRace { get; private set; }
         public NpcClasses NpcClass { get; private set; }
-        public int health = 100;
+        public ushort health = 100;
         private const double _accuracyN = 0.80;
         private double _turnChoice;
 
         //Creates random enemy race.
         public void NpcEnemyRace()
         {
-            int rdmNpcRace = GameFunctions.RndNext(0, 3);
+            ushort rdmNpcRace = GameFunctions.RndNext(0, 3);
 
             switch (rdmNpcRace)
             {
@@ -39,7 +39,7 @@ namespace KnightsAndWarlocks
         //Creates random enemy class.
         public void NpcEnemyClass()
         {
-            int rdmNpcClass = GameFunctions.RndNext(0, 3);
+            ushort rdmNpcClass = GameFunctions.RndNext(0, 3);
 
             switch (rdmNpcClass)
             {
@@ -80,7 +80,7 @@ namespace KnightsAndWarlocks
             {
                 if (IsAccuracySuccessful())
                 {
-                    int dmg = GameFunctions.RndNext(11, 16);
+                    ushort dmg = GameFunctions.RndNext(11, 16);
                     name.Health -= dmg;
 
                     //clamp health to not go below 0
@@ -108,8 +108,8 @@ namespace KnightsAndWarlocks
             }
             else
             {
-                int heal = GameFunctions.RndNext(12, 16);
-                int newHealth = health + heal;
+                ushort heal = GameFunctions.RndNext(12, 16);
+                ushort newHealth = (ushort)(health + heal);
 
                 //Clamp health to not go above 100
                 if (newHealth > 100) newHealth = 100;

@@ -17,7 +17,7 @@ namespace KnightsAndWarlocks
         {
             if (IsSuccessful())
             {
-                int dmg = GameFunctions.RndNext(17, 24);
+                ushort dmg = GameFunctions.RndNext(17, 24);
                 name.health -= dmg;
 
                 if (name.health < 0) name.health = 0;

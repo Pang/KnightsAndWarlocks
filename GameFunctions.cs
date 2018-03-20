@@ -10,22 +10,22 @@ namespace KnightsAndWarlocks
     {
         private static Random _random = new Random();
         public static bool gameOn = false;
-        public static int turnCounter = 0;
-        public static int killCounter = 0;
+        public static ushort turnCounter = 0;
+        public static ushort killCounter = 0;
 
         public static void TurnCountsZero() => turnCounter = 0;
         public static void KillCountsZero() => killCounter = 0;
 
         public static double RndNextDouble() => _random.NextDouble();
-        public static int RndNext(int a, int b) => _random.Next(a, b);
+        public static ushort RndNext(int a, int b) => (ushort)_random.Next(a, b);
 
         public static void NewEnemy(Npc player)
         {
             player.NpcEnemyClass();
             player.NpcEnemyRace();
             killCounter++;
-            int increaseHealth = killCounter * 20;
-            int newHealth = 100 + increaseHealth;
+            ushort increaseHealth = (ushort)(killCounter * 20);
+            ushort newHealth = (ushort)(100 + increaseHealth);
             player.health = newHealth;
         }
 

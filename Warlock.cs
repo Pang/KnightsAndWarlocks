@@ -17,9 +17,9 @@ namespace KnightsAndWarlocks
         {
             if (IsSuccessful())
             {
-                int dmg = GameFunctions.RndNext(10, 17);
+                ushort dmg = GameFunctions.RndNext(10, 17);
                 name.health -= dmg;
-                Health += (dmg / 2);
+                Health += (ushort)(dmg / 2);
 
                 if (name.health < 0) name.health = 0;
                 else Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health and steals {dmg / 2} health");
