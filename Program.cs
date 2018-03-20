@@ -12,7 +12,7 @@ namespace KnightsAndWarlocks
         {
             //Instatiate both player and enemy. ChooseClass is called when creating player object to decide which inherited member to assign.
             Npc enemyNpc1 = new Npc();
-            Player firstPlayer = GameFunctions.ChooseClass();
+            Player firstPlayer = Player.ChooseClass();
 
             while (GameFunctions.gameOn)
             {

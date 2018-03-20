@@ -26,6 +26,33 @@ namespace KnightsAndWarlocks
             _name = PlayerClass + " " + Console.ReadLine();
         }
 
+        public static Player ChooseClass()
+        {
+            Player firstPlayer = null;
+            Console.WriteLine("Type in the class you want to play: (Knight or Warlock)");
+
+            while (firstPlayer == null)
+            {
+                string classChoice = Console.ReadLine();
+                switch (classChoice.ToUpper())
+                {
+                    case "KNIGHT":
+                        firstPlayer = new Knight();
+                        break;
+                    case "WARLOCK":
+                        firstPlayer = new Warlock();
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Not a valid class, please enter 'Knight' or 'Warlock'");
+                        break;
+                }
+            }
+            GameFunctions.gameOn = true;
+            return firstPlayer;
+
+        }
+
         public virtual void GiveDmg(Npc name)
         {
             //Check player accuracy 'IsSuccessful' method is true.
