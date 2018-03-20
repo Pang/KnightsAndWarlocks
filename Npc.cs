@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace KnightsAndWarlocks
 {
@@ -13,14 +14,26 @@ namespace KnightsAndWarlocks
     {
         public NpcRaces NpcRace { get; private set; }
         public NpcClasses NpcClass { get; private set; }
-        public ushort health = 100;
+        public short Health { get; set; } = 100;
         private const double _accuracyN = 0.80;
         private double _turnChoice;
+
+        public void NpcTimer(Player target)
+        {
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromSeconds(1.50);
+
+            var timer = new Timer((e) =>
+            {
+                if (target.Health > 0) NpcChoice(target);
+            }, null, startTimeSpan, periodTimeSpan);
+
+        }
 
         //Creates random enemy race.
         public void NpcEnemyRace()
         {
-            ushort rdmNpcRace = GameFunctions.RndNext(0, 3);
+            short rdmNpcRace = GameFunctions.RndNext(0, 3);
 
             switch (rdmNpcRace)
             {
@@ -39,7 +52,7 @@ namespace KnightsAndWarlocks
         //Creates random enemy class.
         public void NpcEnemyClass()
         {
-            ushort rdmNpcClass = GameFunctions.RndNext(0, 3);
+            short rdmNpcClass = GameFunctions.RndNext(0, 3);
 
             switch (rdmNpcClass)
             {
@@ -65,8 +78,8 @@ namespace KnightsAndWarlocks
         public bool HitOrHeal()
         {
             //Npc intelligence => heal chance thresholds
-            if (health > 95) _turnChoice = 1.00;
-            else if (health > 50) _turnChoice = 0.85;
+            if (Health > 95) _turnChoice = 1.00;
+            else if (Health > 50) _turnChoice = 0.85;
             else _turnChoice = 0.70;
 
             return GameFunctions.RndNextDouble() < _turnChoice;
@@ -80,7 +93,7 @@ namespace KnightsAndWarlocks
             {
                 if (IsAccuracySuccessful())
                 {
-                    ushort dmg = GameFunctions.RndNext(11, 16);
+                    short dmg = GameFunctions.RndNext(11, 16);
                     name.Health -= dmg;
 
                     //clamp health to not go below 0
@@ -108,14 +121,14 @@ namespace KnightsAndWarlocks
             }
             else
             {
-                ushort heal = GameFunctions.RndNext(12, 16);
-                ushort newHealth = (ushort)(health + heal);
+                short heal = GameFunctions.RndNext(12, 16);
+                short newHealth = (short)(Health + heal);
 
                 //Clamp health to not go above 100
                 if (newHealth > 100) newHealth = 100;
 
                 //Swap placeholder health(newHealth) back into health
-                health = newHealth;
+                Health = newHealth;
                 Console.WriteLine($"{NpcRace} {NpcClass} healed by {heal}.");
             }
         }

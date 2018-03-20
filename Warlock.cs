@@ -17,12 +17,12 @@ namespace KnightsAndWarlocks
         {
             if (IsSuccessful())
             {
-                ushort dmg = GameFunctions.RndNext(10, 17);
-                name.health -= dmg;
-                Health += (ushort)(dmg / 2);
+                short dmg = GameFunctions.RndNext(10, 17);
+                name.Health -= dmg;
+                Health += (short)(dmg / 10);
 
-                if (name.health < 0) name.health = 0;
-                else Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health and steals {dmg / 2} health");
+                if (name.Health < 0) name.Health = 0;
+                else Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health and steals {dmg / 10} health");
             }
             else Console.WriteLine($"{_name} missed!");
         }

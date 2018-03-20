@@ -10,23 +10,21 @@ namespace KnightsAndWarlocks
     {
         private static Random _random = new Random();
         public static bool gameOn = false;
-        public static ushort turnCounter = 0;
-        public static ushort killCounter = 0;
 
-        public static void TurnCountsZero() => turnCounter = 0;
+        public static short killCounter = 0;
         public static void KillCountsZero() => killCounter = 0;
 
         public static double RndNextDouble() => _random.NextDouble();
-        public static ushort RndNext(int a, int b) => (ushort)_random.Next(a, b);
+        public static short RndNext(int a, int b) => (short)_random.Next(a, b);
 
         public static void NewEnemy(Npc player)
         {
             player.NpcEnemyClass();
             player.NpcEnemyRace();
             killCounter++;
-            ushort increaseHealth = (ushort)(killCounter * 20);
-            ushort newHealth = (ushort)(100 + increaseHealth);
-            player.health = newHealth;
+            short increaseHealth = (short)(killCounter * 20);
+            short newHealth = (short)(100 + increaseHealth);
+            player.Health = newHealth;
         }
 
         public static void Outcome(string _exitText, Player player1, Npc player2)
@@ -36,10 +34,9 @@ namespace KnightsAndWarlocks
             {
                 player1.HealItems = 9;
                 player1.Health = 100;
-                player2.health = 100;
+                player2.Health = 100;
                 player2.NpcEnemyClass();
                 player2.NpcEnemyRace();
-                TurnCountsZero();
                 KillCountsZero();
             }
             else Console.Clear();

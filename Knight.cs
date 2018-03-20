@@ -17,10 +17,10 @@ namespace KnightsAndWarlocks
         {
             if (IsSuccessful())
             {
-                ushort dmg = GameFunctions.RndNext(17, 24);
-                name.health -= dmg;
+                short dmg = GameFunctions.RndNext(17, 24);
+                name.Health -= dmg;
 
-                if (name.health < 0) name.health = 0;
+                if (name.Health < 0) name.Health = 0;
                 else Console.WriteLine($"{_name} lunges ferociously for {dmg} damage.");
             }
             else Console.WriteLine($"{_name} missed!");

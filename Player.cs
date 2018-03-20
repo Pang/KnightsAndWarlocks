@@ -10,9 +10,9 @@ namespace KnightsAndWarlocks
     {
         private string Name { get => _name; set => Name = value; }
         public virtual string _name { get; protected set; }
-        public ushort Health { get; set; } = 100;
+        public short Health { get; set; } = 100;
         protected virtual double _accuracyP { get; }
-        public virtual ushort HealItems { get; set; } = 9;
+        public virtual short HealItems { get; set; } = 9;
         public virtual string HealItemsType { get; protected set; }
         public virtual string PlayerClass { get; protected set; }
 
@@ -52,16 +52,56 @@ namespace KnightsAndWarlocks
             return firstPlayer;
         }
 
+        public virtual void PlayerChoice(Npc target)
+        {
+            try
+            {
+                //Checks that user input a number
+                string playerOp = Console.ReadLine();
+                int playerOption = int.Parse(playerOp);
+
+                switch (playerOption)
+                {
+                    case 1:
+                        Console.Clear();
+                        GiveDmg(target);
+                        break;
+                    case 2:
+                        if (HealItems > 0)
+                        {
+                            Console.Clear();
+                            HealSelf();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"No {HealItemsType} left!");
+                        }
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Can't find that option.");
+                        break;
+                }
+            }
+            catch
+            {
+                //Catches if input is non-numeric
+                Console.Clear();
+                Console.WriteLine("Please enter a valid option");
+            }
+        }
+
         public virtual void GiveDmg(Npc name)
         {
             //Check player accuracy 'IsSuccessful' method is true.
             if (IsSuccessful())
             {
-                ushort dmg = GameFunctions.RndNext(11, 17);
-                name.health -= dmg;
+                short dmg = GameFunctions.RndNext(11, 17);
+                name.Health -= dmg;
 
                 //clamp health to not go below 0
-                if (name.health < 0) name.health = 0;
+                if (name.Health < 0) name.Health = 0;
                 else Console.WriteLine($"{Name} lunges ferociously for {dmg} damage.");
             }
             else Console.WriteLine($"{Name} missed!");
@@ -69,16 +109,21 @@ namespace KnightsAndWarlocks
 
         public void HealSelf()
         {
-            ushort heal = GameFunctions.RndNext(65, 75);
-            ushort newHealth = (ushort)(Health + heal);
+            short heal = GameFunctions.RndNext(65, 75);
+            short newHealth = (short)(Health + heal);
 
             //Clamp health to not go above 100
             if (newHealth > 100) newHealth = 100;
 
             //Swap placeholder health(newHealth) back into int health variable
-            Health = newHealth;
-            Console.WriteLine($"{Name} bandaged for {heal} health.");
-            HealItems--;
+            if (Health > 0)
+            {
+                Health = newHealth;
+                Console.WriteLine($"{Name} bandaged for {heal} health.");
+                HealItems--;
+            }
+            else Health = 0;
+
         }
     }
 }
