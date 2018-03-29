@@ -13,6 +13,7 @@ namespace KnightsAndWarlocks
         public short Health { get; set; } = 100;
         protected virtual double _accuracyP { get; }
         public virtual short HealItems { get; set; } = 9;
+        public virtual short SpecialMoves { get; set; } = 3;
         public virtual string HealItemsType { get; protected set; }
         public virtual string PlayerClass { get; protected set; }
 
@@ -78,6 +79,10 @@ namespace KnightsAndWarlocks
                             Console.WriteLine($"No {HealItemsType} left!");
                         }
                         break;
+                    case 3:
+                        Console.Clear();
+                        SpecialMove(target);
+                        break;
                     default:
                         Console.Clear();
                         Console.WriteLine("Can't find that option.");
@@ -92,22 +97,26 @@ namespace KnightsAndWarlocks
             }
         }
 
+        ////////////////////////////////////////////////////////
+        /* All methods below are default for the Knight class */
+        ////////////////////////////////////////////////////////
+
         public virtual void GiveDmg(Npc name)
         {
             //Check player accuracy 'IsSuccessful' method is true.
             if (IsSuccessful())
             {
-                short dmg = GameFunctions.RndNext(11, 17);
+                short dmg = GameFunctions.RndNext(17, 24);
                 name.Health -= dmg;
 
                 //clamp health to not go below 0
                 if (name.Health < 0) name.Health = 0;
-                else Console.WriteLine($"{Name} lunges ferociously for {dmg} damage.");
+                else Console.WriteLine($"{_name} lunges ferociously for {dmg} damage.");
             }
-            else Console.WriteLine($"{Name} missed!");
+            else Console.WriteLine($"{_name} missed!");
         }
 
-        public void HealSelf()
+        public virtual void HealSelf()
         {
             short heal = GameFunctions.RndNext(65, 75);
             short newHealth = (short)(Health + heal);
@@ -123,7 +132,18 @@ namespace KnightsAndWarlocks
                 HealItems--;
             }
             else Health = 0;
+        }
 
+        public virtual void SpecialMove(Npc name)
+        {
+            if (SpecialMoves > 0)
+            {
+                short dmg = GameFunctions.RndNext(100, 200);
+                Console.WriteLine($"You charge fiercly, slicing down at the {name.NpcRace} for {dmg} damage!");
+                name.Health -= dmg;
+                SpecialMoves--;
+            }
+            else Console.WriteLine("You're out of special moves!");
         }
     }
 }

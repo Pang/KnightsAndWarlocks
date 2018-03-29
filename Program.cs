@@ -13,7 +13,8 @@ namespace KnightsAndWarlocks
         {
             //Game choices & current healths
             Console.WriteLine("\nOption 1: Attack");
-            Console.WriteLine($"Option 2: Heal({player.HealItems} {player.HealItemsType} left!)");
+            Console.WriteLine($"Option 2: {player.HealItemsType} ({player.HealItems} left!)");
+            Console.WriteLine($"Option 3: Special Attack ({player.SpecialMoves} left!)");
             Console.WriteLine($"\n{player._name}: {player.Health}hp");
             Console.WriteLine($"{npc.NpcRace} {npc.NpcClass}: {npc.Health}hp");
             Console.WriteLine($"\nKills: {GameFunctions.killCounter}");
@@ -21,18 +22,15 @@ namespace KnightsAndWarlocks
 
         public static void NpcTimer(Player player, Npc npc)
         {
-            var startTimeSpan = TimeSpan.Zero;
-            var periodTimeSpan = TimeSpan.FromSeconds(1.500);
-
             var timer = new Timer((e) =>
             {
-                if (player.Health > 0)
+                if (player.Health > 0 && npc.Health > 0)
                 {
                     Console.Clear();
                     npc.NpcChoice(player);
                     CombatMenu(player, npc);
                 }
-            }, null, startTimeSpan, periodTimeSpan);
+            }, null, TimeSpan.Zero, TimeSpan.FromSeconds(1.500));
         }
 
         public static void Main()

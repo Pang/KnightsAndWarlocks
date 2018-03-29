@@ -17,9 +17,6 @@ namespace KnightsAndWarlocks
         public static double RndNextDouble() => _random.NextDouble();
         public static short RndNext(int a, int b) => (short)_random.Next(a, b);
 
-
-
-
         public static void NewEnemy(Npc player)
         {
             player.NpcEnemyClass();

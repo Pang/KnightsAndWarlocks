@@ -18,6 +18,13 @@ namespace KnightsAndWarlocks
         private const double _accuracyN = 0.80;
         private double _turnChoice;
 
+        //Constructor calls 2 functions to create an enemy.
+        public Npc()
+        {
+            NpcEnemyRace();
+            NpcEnemyClass();
+        }
+
         //Creates random enemy race.
         public void NpcEnemyRace()
         {
@@ -54,13 +61,6 @@ namespace KnightsAndWarlocks
                     NpcClass = NpcClasses.Mage;
                     break;
             }
-        }
-
-        //Constructor calls 2 functions to create an enemy.
-        public Npc()
-        {
-            NpcEnemyRace();
-            NpcEnemyClass();
         }
 
         public bool HitOrHeal()
