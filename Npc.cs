@@ -18,18 +18,6 @@ namespace KnightsAndWarlocks
         private const double _accuracyN = 0.80;
         private double _turnChoice;
 
-        public void NpcTimer(Player target)
-        {
-            var startTimeSpan = TimeSpan.Zero;
-            var periodTimeSpan = TimeSpan.FromSeconds(1.50);
-
-            var timer = new Timer((e) =>
-            {
-                if (target.Health > 0) NpcChoice(target);
-            }, null, startTimeSpan, periodTimeSpan);
-
-        }
-
         //Creates random enemy race.
         public void NpcEnemyRace()
         {
