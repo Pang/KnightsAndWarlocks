@@ -30,7 +30,7 @@ namespace KnightsAndWarlocks
                     npc.NpcChoice(player);
                     CombatMenu(player, npc);
                 }
-            }, null, TimeSpan.Zero, TimeSpan.FromSeconds(1.500));
+            }, null, TimeSpan.Zero, TimeSpan.FromSeconds(2));
         }
 
         public static void Main()
@@ -54,6 +54,7 @@ namespace KnightsAndWarlocks
                 else if (enemyNpc1.Health <= 0)
                 {
                     Console.WriteLine($"You killed the {enemyNpc1.NpcRace} {enemyNpc1.NpcClass}!");
+                    enemyNpc1.DropItem(firstPlayer);
                     GameFunctions.NewEnemy(enemyNpc1);
                 }
                 else

@@ -17,12 +17,31 @@ namespace KnightsAndWarlocks
         public short Health { get; set; } = 100;
         private const double _accuracyN = 0.80;
         private double _turnChoice;
+        private const double _dropChance = 0.78;
 
         //Constructor calls 2 functions to create an enemy.
         public Npc()
         {
             NpcEnemyRace();
             NpcEnemyClass();
+        }
+
+        public void DropItem(Player player)
+        {
+            if (GameFunctions.RndNextDouble() > _dropChance)
+            {
+                switch (GameFunctions.RndNext(1, 3))
+                {
+                    case 1:
+                        Console.WriteLine($"The {NpcRace} dropped a {player.HealItemsType}!");
+                        player.HealItems++;
+                        break;
+                    case 2:
+                        Console.WriteLine($"The {NpcRace} dropped a potion labeled 'Special Attack!'");
+                        player.SpecialMoves++;
+                        break;
+                }
+            }
         }
 
         //Creates random enemy race.

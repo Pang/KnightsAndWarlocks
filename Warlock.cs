@@ -12,7 +12,7 @@ namespace KnightsAndWarlocks
         public override string HealItemsType { get; protected set; } = "Health Potion";
         public override string _name { get; protected set; }
         protected override double _accuracyP { get; } = 0.80;
-        public override short HealItems { get; set; } = 6;
+        public override short HealItems { get; set; } = 5;
 
         public override void GiveDmg(Npc name)
         {
@@ -20,10 +20,10 @@ namespace KnightsAndWarlocks
             {
                 short dmg = GameFunctions.RndNext(10, 17);
                 name.Health -= dmg;
-                Health += (short)(dmg / 10);
+                Health += 1;
 
                 if (name.Health < 0) name.Health = 0;
-                else Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health and steals {dmg / 10} health");
+                else Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health, stealing 1hp");
 
                 if (Health > 100) Health = 100;
             }

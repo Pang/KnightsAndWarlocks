@@ -33,6 +33,7 @@ namespace KnightsAndWarlocks
             else if (_exitText.ToLower() == "restart")
             {
                 player1.HealItems = 9;
+                player1.SpecialMoves = 3;
                 player1.Health = 100;
                 player2.Health = 100;
                 player2.NpcEnemyClass();
