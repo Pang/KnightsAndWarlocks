@@ -40,7 +40,10 @@ namespace KnightsAndWarlocks
                 player2.NpcEnemyRace();
                 KillCountsZero();
             }
-            else Console.Clear();
+            else
+            {
+                Console.Clear();
+            }
         }
     }
 }

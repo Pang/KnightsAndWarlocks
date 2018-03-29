@@ -13,6 +13,7 @@ namespace KnightsAndWarlocks
         public override string _name { get; protected set; }
         protected override double _accuracyP { get; } = 0.80;
         public override short HealItems { get; set; } = 5;
+        public double HealChance { get; set; } = 0.50;
 
         public override void GiveDmg(Npc name)
         {
@@ -20,14 +21,31 @@ namespace KnightsAndWarlocks
             {
                 short dmg = GameFunctions.RndNext(10, 17);
                 name.Health -= dmg;
-                Health += 1;
 
-                if (name.Health < 0) name.Health = 0;
-                else Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health, stealing 1hp");
+
+                if (name.Health < 0)
+                {
+                    name.Health = 0;
+                }
+                else
+                {
+                    if (GameFunctions.RndNextDouble() > HealChance)
+                    {
+                        Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health, stealing 1hp");
+                        Health += 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health");
+                    }
+                }
 
                 if (Health > 100) Health = 100;
             }
-            else Console.WriteLine($"{_name} missed!");
+            else
+            {
+                Console.WriteLine($"{_name} missed!");
+            }
         }
 
         public override void HealSelf()
@@ -43,7 +61,10 @@ namespace KnightsAndWarlocks
                 Console.WriteLine($"{_name} drank a potion for {heal} health.");
                 HealItems--;
             }
-            else Health = 0;
+            else
+            {
+                Health = 0;
+            }
         }
 
         public override void SpecialMove(Npc name)
@@ -55,7 +76,10 @@ namespace KnightsAndWarlocks
                 name.Health -= dmg;
                 SpecialMoves--;
             }
-            else Console.WriteLine("You're out of special moves!");
+            else
+            {
+                Console.WriteLine("You're out of special moves!");
+            }
         }
     }
 }

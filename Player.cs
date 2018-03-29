@@ -113,7 +113,10 @@ namespace KnightsAndWarlocks
                 if (name.Health < 0) name.Health = 0;
                 else Console.WriteLine($"{_name} lunges ferociously for {dmg} damage.");
             }
-            else Console.WriteLine($"{_name} missed!");
+            else
+            {
+                Console.WriteLine($"{_name} missed!");
+            }
         }
 
         public virtual void HealSelf()
@@ -131,7 +134,10 @@ namespace KnightsAndWarlocks
                 Console.WriteLine($"{Name} bandaged for {heal} health.");
                 HealItems--;
             }
-            else Health = 0;
+            else
+            {
+                Health = 0;
+            }
         }
 
         public virtual void SpecialMove(Npc name)
@@ -143,7 +149,10 @@ namespace KnightsAndWarlocks
                 name.Health -= dmg;
                 SpecialMoves--;
             }
-            else Console.WriteLine("You're out of special moves!");
+            else
+            {
+                Console.WriteLine("You're out of special moves!");
+            }
         }
     }
 }
