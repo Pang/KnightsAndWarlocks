@@ -9,6 +9,25 @@ namespace KnightsAndWarlocks
 {
     class Program
     {
+        static Queue<string> combatLog = new Queue<string>();
+
+        public static void AddtoCombatLog(string stringy)
+        {
+            combatLog.Enqueue(stringy);
+            if (combatLog.Count > 5) combatLog.Dequeue();
+        }
+
+        public static void PrintCombatLog()
+        {
+            string[] array = new string[combatLog.Count];
+            combatLog.CopyTo(array, 0);
+            Console.WriteLine("Combat Log:");
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine(array[i]);
+            }
+        }
+
         public static void CombatMenu(Player player, Npc npc)
         {
             //Game choices & current healths
@@ -17,7 +36,8 @@ namespace KnightsAndWarlocks
             Console.WriteLine($"Option 3: Special Attack ({player.SpecialMoves} left!)");
             Console.WriteLine($"\n{player._name}: {player.Health}hp");
             Console.WriteLine($"{npc.NpcRace} {npc.NpcClass}: {npc.Health}hp");
-            Console.WriteLine($"\nKills: {GameFunctions.killCounter}");
+            Console.WriteLine($"\nKills: {GameFunctions.killCounter}\n");
+            PrintCombatLog();
         }
 
         public static void NpcTimer(Player player, Npc npc)

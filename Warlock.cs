@@ -22,7 +22,6 @@ namespace KnightsAndWarlocks
                 short dmg = GameFunctions.RndNext(10, 17);
                 name.Health -= dmg;
 
-
                 if (name.Health < 0)
                 {
                     name.Health = 0;
@@ -31,12 +30,12 @@ namespace KnightsAndWarlocks
                 {
                     if (GameFunctions.RndNextDouble() > HealChance)
                     {
-                        Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health, stealing 1hp");
+                        Program.AddtoCombatLog($"{_name} damages {name.NpcRace} for {dmg} health, stealing 1hp");
                         Health += 1;
                     }
                     else
                     {
-                        Console.WriteLine($"{_name} damages {name.NpcRace} for {dmg} health");
+                        Program.AddtoCombatLog($"{_name} damages {name.NpcRace} for {dmg} health");
                     }
                 }
 
@@ -44,7 +43,7 @@ namespace KnightsAndWarlocks
             }
             else
             {
-                Console.WriteLine($"{_name} missed!");
+                Program.AddtoCombatLog($"{_name} missed!");
             }
         }
 
@@ -58,7 +57,7 @@ namespace KnightsAndWarlocks
             if (Health > 0)
             {
                 Health = newHealth;
-                Console.WriteLine($"{_name} drank a potion for {heal} health.");
+                Program.AddtoCombatLog($"{_name} drank a potion for {heal} health.");
                 HealItems--;
             }
             else
@@ -72,13 +71,13 @@ namespace KnightsAndWarlocks
             if (SpecialMoves > 0)
             {
                 short dmg = GameFunctions.RndNext(200, 300);
-                Console.WriteLine($"You summon a demon which crushes the {name.NpcRace} for {dmg} damage!");
+                Program.AddtoCombatLog($"You summon a demon which crushes the {name.NpcRace} for {dmg} damage!");
                 name.Health -= dmg;
                 SpecialMoves--;
             }
             else
             {
-                Console.WriteLine("You're out of special moves!");
+                Program.AddtoCombatLog("You're out of special moves!");
             }
         }
     }

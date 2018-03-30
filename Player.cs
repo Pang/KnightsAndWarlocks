@@ -76,7 +76,7 @@ namespace KnightsAndWarlocks
                         else
                         {
                             Console.Clear();
-                            Console.WriteLine($"No {HealItemsType} left!");
+                            Program.AddtoCombatLog($"No {HealItemsType} left!");
                         }
                         break;
                     case 3:
@@ -85,7 +85,7 @@ namespace KnightsAndWarlocks
                         break;
                     default:
                         Console.Clear();
-                        Console.WriteLine("Can't find that option.");
+                        Program.AddtoCombatLog("Can't find that option.");
                         break;
                 }
             }
@@ -111,11 +111,14 @@ namespace KnightsAndWarlocks
 
                 //clamp health to not go below 0
                 if (name.Health < 0) name.Health = 0;
-                else Console.WriteLine($"{_name} lunges ferociously for {dmg} damage.");
+                else
+                {
+                    Program.AddtoCombatLog($"{_name} lunges ferociously for {dmg} damage.");
+                }
             }
             else
             {
-                Console.WriteLine($"{_name} missed!");
+                Program.AddtoCombatLog($"{_name} missed!");
             }
         }
 
@@ -131,7 +134,7 @@ namespace KnightsAndWarlocks
             if (Health > 0)
             {
                 Health = newHealth;
-                Console.WriteLine($"{Name} bandaged for {heal} health.");
+                Program.AddtoCombatLog($"{Name} bandaged for {heal} health.");
                 HealItems--;
             }
             else
@@ -145,13 +148,13 @@ namespace KnightsAndWarlocks
             if (SpecialMoves > 0)
             {
                 short dmg = GameFunctions.RndNext(100, 200);
-                Console.WriteLine($"You charge fiercly, slicing down at the {name.NpcRace} for {dmg} damage!");
+                Program.AddtoCombatLog($"You charge fiercly, slicing down at the {name.NpcRace} for {dmg} damage!");
                 name.Health -= dmg;
                 SpecialMoves--;
             }
             else
             {
-                Console.WriteLine("You're out of special moves!");
+                Program.AddtoCombatLog("You're out of special moves!");
             }
         }
     }
