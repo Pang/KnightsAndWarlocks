@@ -17,7 +17,7 @@ namespace KnightsAndWarlocks
         public short Health { get; set; } = 100;
         private const double _accuracyN = 0.80;
         private double _turnChoice;
-        private const double _dropChance = 0.78;
+        private const double _dropChance = 0.60;
 
         //Constructor calls 2 functions to create an enemy.
         public Npc()
@@ -33,11 +33,11 @@ namespace KnightsAndWarlocks
                 switch (GameFunctions.RndNext(1, 3))
                 {
                     case 1:
-                        Console.WriteLine($"The {NpcRace} dropped a {player.HealItemsType}!");
+                        GameFunctions.AddToEnemyLog($"The {NpcRace} dropped a {player.HealItemsType}!");
                         player.HealItems++;
                         break;
                     case 2:
-                        Console.WriteLine($"The {NpcRace} dropped a potion labeled 'Special Attack!'");
+                        GameFunctions.AddToEnemyLog($"The {NpcRace} dropped a potion labeled 'Special Attack!'");
                         player.SpecialMoves++;
                         break;
                 }
@@ -109,21 +109,21 @@ namespace KnightsAndWarlocks
                     {
                         if (NpcClass == NpcClasses.Warrior)
                         {
-                            Console.WriteLine($"The {NpcRace} {NpcClass} slashed their sword at you for {dmg} damage!");
+                            GameFunctions.AddToEnemyLog($"The {NpcRace} {NpcClass} slashed their sword at you for {dmg} damage!");
                         }
                         else if (NpcClass == NpcClasses.Rogue)
                         {
-                            Console.WriteLine($"The {NpcRace} {NpcClass} threw a knife at you for {dmg} damage!");
+                            GameFunctions.AddToEnemyLog($"The {NpcRace} {NpcClass} threw a knife at you for {dmg} damage!");
                         }
                         else if (NpcClass == NpcClasses.Mage)
                         {
-                            Console.WriteLine($"The {NpcRace} {NpcClass} hurled a fireball at you for {dmg} damage!");
+                            GameFunctions.AddToEnemyLog($"The {NpcRace} {NpcClass} hurled a fireball at you for {dmg} damage!");
                         }
                     }
                 }
                 else
                 {
-                    Console.WriteLine($"{NpcRace} {NpcClass} missed!");
+                    GameFunctions.AddToEnemyLog($"{NpcRace} {NpcClass} missed!");
                 }
             }
             else
@@ -136,7 +136,7 @@ namespace KnightsAndWarlocks
 
                 //Swap placeholder health(newHealth) back into health
                 Health = newHealth;
-                Console.WriteLine($"{NpcRace} {NpcClass} healed by {heal}.");
+                GameFunctions.AddToEnemyLog($"{NpcRace} {NpcClass} healed by {heal}.");
             }
         }
     }

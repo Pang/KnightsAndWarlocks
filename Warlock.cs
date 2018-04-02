@@ -30,12 +30,12 @@ namespace KnightsAndWarlocks
                 {
                     if (GameFunctions.RndNextDouble() > HealChance)
                     {
-                        Program.AddtoCombatLog($"{_name} damages {name.NpcRace} for {dmg} health, stealing 1hp");
+                        GameFunctions.AddToCombatLog($"{_name} damages {name.NpcRace} for {dmg} health, stealing 1hp");
                         Health += 1;
                     }
                     else
                     {
-                        Program.AddtoCombatLog($"{_name} damages {name.NpcRace} for {dmg} health");
+                        GameFunctions.AddToCombatLog($"{_name} damages {name.NpcRace} for {dmg} health");
                     }
                 }
 
@@ -43,7 +43,7 @@ namespace KnightsAndWarlocks
             }
             else
             {
-                Program.AddtoCombatLog($"{_name} missed!");
+                GameFunctions.AddToCombatLog($"{_name} missed!");
             }
         }
 
@@ -57,7 +57,7 @@ namespace KnightsAndWarlocks
             if (Health > 0)
             {
                 Health = newHealth;
-                Program.AddtoCombatLog($"{_name} drank a potion for {heal} health.");
+                GameFunctions.AddToCombatLog($"{_name} drank a potion for {heal} health.");
                 HealItems--;
             }
             else
@@ -71,13 +71,13 @@ namespace KnightsAndWarlocks
             if (SpecialMoves > 0)
             {
                 short dmg = GameFunctions.RndNext(200, 300);
-                Program.AddtoCombatLog($"You summon a demon which crushes the {name.NpcRace} for {dmg} damage!");
+                GameFunctions.AddToCombatLog($"You summon a demon which crushes the {name.NpcRace} for {dmg} damage!");
                 name.Health -= dmg;
                 SpecialMoves--;
             }
             else
             {
-                Program.AddtoCombatLog("You're out of special moves!");
+                GameFunctions.AddToCombatLog("You're out of special moves!");
             }
         }
     }
