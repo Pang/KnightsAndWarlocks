@@ -93,7 +93,7 @@ namespace KnightsAndWarlocks
             {
                 //Catches if input is non-numeric
                 Console.Clear();
-                Console.WriteLine("Please enter a valid option");
+                GameFunctions.AddToCombatLog("Please enter a valid option");
             }
         }
 

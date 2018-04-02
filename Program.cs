@@ -11,15 +11,16 @@ namespace KnightsAndWarlocks
     {
         public static void CombatMenu(Player player, Npc npc)
         {
+            //Console.Clear();
             //Game choices & current healths
             GameFunctions.PrintEnemyLog();
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("\nOption 1: Attack");
+            Console.WriteLine($"\n{player._name}: {player.Health}hp");
+            Console.WriteLine($"Kills: {GameFunctions.killCounter}\n");
+            Console.WriteLine("Option 1: Attack");
             Console.WriteLine($"Option 2: {player.HealItemsType} ({player.HealItems} left!)");
             Console.WriteLine($"Option 3: Special Attack ({player.SpecialMoves} left!)");
-            Console.WriteLine($"\n{player._name}: {player.Health}hp");
-            Console.WriteLine($"{npc.NpcRace} {npc.NpcClass}: {npc.Health}hp");
-            Console.WriteLine($"\nKills: {GameFunctions.killCounter}\n");
+            Console.WriteLine($"\n{npc.NpcRace} {npc.NpcClass}: {npc.Health}hp\n");
             Console.WriteLine("--------------------------------------------------");
             GameFunctions.PrintPlayerLog();
         }
@@ -57,7 +58,7 @@ namespace KnightsAndWarlocks
                 }
                 else if (enemyNpc1.Health <= 0)
                 {
-                    Console.WriteLine($"You killed the {enemyNpc1.NpcRace} {enemyNpc1.NpcClass}!");
+                    GameFunctions.AddToEnemyLog($"{enemyNpc1.NpcRace} {enemyNpc1.NpcClass} died!");
                     enemyNpc1.DropItem(firstPlayer);
                     GameFunctions.NewEnemy(enemyNpc1);
                 }
