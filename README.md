@@ -7,6 +7,10 @@ two objects interact/affect each others properties,
 however everytime I learnt something new I tried to apply 
 it into this game; mostly with the intent of learning.
 
+You can type in your hero name, pick a class and fight a 
+variety of npc races and classes whilst collecting items 
+from them to further your crusade,
+
 ----------------------------------------------------------
 ### Structure
 
